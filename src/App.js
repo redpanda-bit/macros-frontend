@@ -1,18 +1,58 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Auth from './adapters/Auth'
+import LoginForm from './components/LoginForm'
+import SignupForm from './components/SignupForm'
+import { Route, Redirect } from 'react-router-dom'
 
 class App extends Component {
+
+  state = {
+    currentUser: {},
+    isLoggedIn: false
+  }
+
+
+  loginUser = (userParams) => {
+    Auth.login(userParams)
+      .then(user => {
+        this.setState({
+          currentUser: user,
+          isLoggedIn: true
+        })
+        localStorage.setItem('jwt', user.jwt)
+      })
+  }
+
+  signupUser = (userParams) => {
+    Auth.signup(userParams)
+      .then(user => {
+        this.setState({
+          currentUser: user,
+          isLoggedIn: true
+        })
+        localStorage.setItem('jwt', user.jwt)
+      })
+  }
+
+
+
+  handleButtonClick = () => {
+    Auth.me().then(user => {
+      console.log(user)
+
+    })
+
+  }
+
   render() {
+    console.log(this.state)
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        { localStorage.getItem('jwt') ? null : <Redirect to="/login"/>   }
+        <Route path="/login" render={() => <LoginForm onLogin={this.loginUser}/> }/>
+        <Route path='/signup' render={() => <SignupForm  onSignup={this.signupUser}/>} />
       </div>
     );
   }
