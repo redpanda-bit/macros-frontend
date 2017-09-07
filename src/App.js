@@ -4,6 +4,7 @@ import './App.css';
 import Auth from './adapters/Auth'
 import LoginForm from './components/LoginForm'
 import SignupForm from './components/SignupForm'
+import MacrosContainer from './components/MacrosContainer'
 import { Route, Redirect } from 'react-router-dom'
 
 class App extends Component {
@@ -46,11 +47,15 @@ class App extends Component {
 
   }
 
+  handleLogOut = () => {
+    Auth.logOut()
+  }
+
   render() {
     console.log(this.state)
     return (
       <div>
-        { localStorage.getItem('jwt') ? null : <Redirect to="/login"/>   }
+        { localStorage.getItem('jwt') ?  <Route path="/home" render={() => <MacrosContainer handleLogOut={this.handleLogOut}/> }/>   : <Redirect to="/login" /> }
         <Route path="/login" render={() => <LoginForm onLogin={this.loginUser}/> }/>
         <Route path='/signup' render={() => <SignupForm  onSignup={this.signupUser}/>} />
       </div>
