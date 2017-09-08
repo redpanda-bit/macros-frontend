@@ -1,5 +1,5 @@
 import React from 'react'
-
+import ModalSignupForm from './ModalSignupForm'
 
 class LoginForm extends React.Component {
 
@@ -47,11 +47,10 @@ class LoginForm extends React.Component {
           <input type="password" onChange={this.handlePasswordChange} value={this.state.passwordInput} placeholder="password" />
           <input type="submit" value="Log in"/> 
         </form>
-        <p>Or <a href="/signup" >Sign up!</a></p>
+        <ModalSignupForm onSignup={this.props.onSignup}/>
       </div>
     )
   }
 }
-
 
 export default LoginForm

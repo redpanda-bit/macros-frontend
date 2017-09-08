@@ -4,6 +4,7 @@ import './App.css';
 import Auth from './adapters/Auth'
 import LoginForm from './components/LoginForm'
 import SignupForm from './components/SignupForm'
+import ModalSignupForm from './components/ModalSignupForm'
 import MacrosContainer from './components/MacrosContainer'
 import { Route, Redirect } from 'react-router-dom'
 
@@ -48,16 +49,24 @@ class App extends Component {
   }
 
   handleLogOut = () => {
-    Auth.logOut()
+    Auth.logOut();
+    this.setState({
+      isLoggedIn: false
+    })
+    console.log("Auth logout state", this.state)
+
   }
 
+
   render() {
-    console.log(this.state)
+    console.log(this.signupUser, "sign up function")
+    console.log(this.props)
+    console.log("State", this.state)
     return (
       <div>
-        { localStorage.getItem('jwt') ?  <Route path="/home" render={() => <MacrosContainer handleLogOut={this.handleLogOut}/> }/>   : <Redirect to="/login" /> }
-        <Route path="/login" render={() => <LoginForm onLogin={this.loginUser}/> }/>
-        <Route path='/signup' render={() => <SignupForm  onSignup={this.signupUser}/>} />
+      <Route strict path="/macros" render={() => (this.state.isLoggedIn && this.props.location.pathname !== "/macros/signup" ? ( <Redirect to="/macros/home"/>) : (<Redirect to="/macros/login"/> ) )}/>
+        <Route path="/macros/home" render={() => <MacrosContainer handleLogOut={this.handleLogOut} isLoggedIn={this.state.isLoggedIn}/> }/>
+        <Route path="/macros/login" render={() => <LoginForm onLogin={this.loginUser} onSignup={this.signupUser}/> }/>
       </div>
     );
   }
