@@ -70,7 +70,7 @@ class SignupForm extends React.Component {
 
   render() {
     return (
-        <form onSubmit={this.handleSignupSubmit}>
+        <form onSubmit={this.handleSignupSubmit} className="ui form">
           <input type="text" onChange={this.handleUsernameChange} value={this.state.usernameInput} placeholder="username"/>
           <input type="email" onChange={this.handleEmailChange} value={this.state.emailInput} placeholder="email" />
           <input type="password" onChange={this.handlePasswordChange} value={this.state.passwordInput} placeholder="password" />

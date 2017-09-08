@@ -8,5 +8,12 @@ import 'semantic-ui-css/semantic.min.css'
 import 'semantic-ui-react'
 
 
-ReactDOM.render(<Router><Route path="/" component={App} /></Router>, document.getElementById('root'));
+// const Clarifai = require('clarifai')
+
+// const app = new Clarifai.App({
+
+// })
+
+
+ReactDOM.render(<Router><App/></Router>, document.getElementById('root'));
 registerServiceWorker();
