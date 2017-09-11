@@ -1,6 +1,5 @@
 import React from 'react'
 import ScreenOne from './ScreenOne'
-import ScreenTwo from './ScreenTwo'
 
 
 class MacrosContainer extends React.Component {

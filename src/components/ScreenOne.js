@@ -24,24 +24,28 @@ class ScreenOne extends React.Component {
 	}
 
 
-
-
 	render() {
 		return (
 			<div>
-				<div>
-					<h1>Pick a date</h1>
-					<input type="date"/> 
+				<div style={{float: "left"}}>
+					<div>
+						<h1>Pick a date</h1>
+						<input type="date"/> 
+					</div>
+					<div>
+						<h1>Enter your image URL</h1>
+						<input onChange={this.handleURLChange} type="url" />
+					</div>
+					<div>
+						<button onClick={this.handleClick}>Submit</button>
+					</div>
+					<br></br>
 				</div>
-				<div>
-					<h1>Enter your image URL</h1>
-					<input onChange={this.handleURLChange} type="url" />
-				</div>
-				<div>
-					<button onClick={this.handleClick}>Submit</button>
+				<div style={{float: "right"}}>
+					<img alt="food" src={this.state.URLValue} style={{height: "150px"}}/>
 				</div>
 				<br></br>
-				<ScreenTwo concepts={this.state.concepts}/>
+				{this.state.URLValue === "" ? null : <ScreenTwo concepts={this.state.concepts}/>}
 			</div>
 			)
 	}

@@ -24,13 +24,10 @@ class TableRow extends Component {
 	}
 
 	handleSelect = (event) => {
-		console.log("select value", event.target.value);
-		console.log("integer?", typeof event.target.value)
 		this.setState({foodId: event.target.value}, this.fetchNutrientContent)
 	}
 
 	fetchNutrientContent = () => {
-			console.log(this.state.foodId, "food id inside fetch")
 			const selectedFoodURL = 'https://api.nal.usda.gov/ndb/nutrients/?format=json&api_key=LKVhrtgJHJPcK8G72law6xFCC7jpr6Fx5KUQXQVY&nutrients=205&nutrients=204&nutrients=208&nutrients=269&ndbno=' + this.state.foodId
 			fetch(selectedFoodURL)
 			.then(res => res.json())
@@ -43,13 +40,10 @@ class TableRow extends Component {
 	}
 
 	handleChange = (event) => {
-		this.setState({
-			selected: !this.state.selected
-		})
+		this.setState({selected: !this.state.selected}, () => { this.props.setTotal(this.state.selected, this.state.calories, this.state.protein, this.state.fat, this.state.carbs, this.state.servingNumbers)} )
 	}
-
+// (this.state.selected ? this.props.setTotal(this.state.calories, this.state.protein, this.state.fat, this.state.carbs, this.state.servingNumbers) : null)
 	componentDidMount() {
-		console.log("did mount")
 		const queryURL = `https://api.nal.usda.gov/ndb/search/?format=json&q=${this.props.concept.name}&sort=n&max=10&offset=0&api_key=LKVhrtgJHJPcK8G72law6xFCC7jpr6Fx5KUQXQVY&ds=Standard%20Reference`
 		fetch(queryURL)
 		.then(res => res.json())
@@ -58,8 +52,7 @@ class TableRow extends Component {
 
 
 	render() {
-		console.log("nutrients report", this.state.nutrientsReport)
-		console.log("serving size", this.state.servingNumbers)
+		console.log("selected from render", this.state.selected);
 		return(
 			<tr>
 			 <td><input type="checkbox" onChange={this.handleChange} checked={this.state.selected} /></td>
@@ -67,10 +60,10 @@ class TableRow extends Component {
 			 <td className="select-food"><FoodSelect options={this.state.searchResults} foodId={this.state.foodId} handleSelect={this.handleSelect}/> </td>
 			 <td className="serving-size">{this.state.servingSize}</td>
 			 <td className="serving-number"><ServingSelect handleServingSelect={this.handleServingSelect} value={this.state.servingNumbers}/></td>
-			 <td className="calories">{this.state.calories * this.state.servingNumbers}</td>
-			 <td className="protein">{this.state.protein * this.state.servingNumbers}</td>
-			 <td className="fat">{this.state.fat * this.state.servingNumbers}</td>
-			 <td className="carbs">{this.state.carbs * this.state.servingNumbers}</td>
+			 <td className="calories">{!parseInt(this.state.calories, 10) ? 0 : this.state.calories * this.state.servingNumbers}</td>
+			 <td className="protein">{!parseInt(this.state.protein, 10) ? 0 : this.state.protein * this.state.servingNumbers}</td>
+			 <td className="fat">{!parseInt(this.state.fat, 10) ? 0 : this.state.fat * this.state.servingNumbers}</td>
+			 <td className="carbs">{!parseInt(this.state.carbs, 10) ? 0 : this.state.carbs * this.state.servingNumbers}</td>
 		    </tr>
 		)
 	}
