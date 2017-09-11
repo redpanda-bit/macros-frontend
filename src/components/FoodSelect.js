@@ -1,15 +1,16 @@
 import React from 'react'
 
-const FoodSelect = (props) => {
-	// const options = props.options.map(option => <option value={option.nbdno}>{option.name}</option> )
-	return(
-		<select>
-		  <option value="volvo">Volvo</option>
-		  <option value="saab">Saab</option>
-		  <option value="mercedes">Mercedes</option>
-		  <option value="audi">Audi</option>
-		</select>		
-		)
+class FoodSelect extends React.Component {
+	
+	render() {
+		const options = this.props.options.map((option, idx) => <option key={idx} value={option.ndbno}>{option.name}</option> )
+		return(
+			<select value={this.props.foodId} onChange={this.props.handleSelect}>
+				<option value="">Select</option>
+				{options}
+			</select>		
+			)
+	}
 }
 
 export default FoodSelect
@@ -34,4 +35,3 @@ export default FoodSelect
 // "09427"
 // offset
 // :
-// 0

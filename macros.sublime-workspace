@@ -1,0 +1,361 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"rcc",
+				"rcc\tReact: legacy component"
+			],
+			[
+				"search",
+				"searchResults"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"URL",
+				"URLValue"
+			],
+			[
+				"handle",
+				"handleURLChange"
+			],
+			[
+				"sign",
+				"signupUser"
+			],
+			[
+				"Sign",
+				"SignupForm"
+			],
+			[
+				"path",
+				"pathname"
+			],
+			[
+				"handl",
+				"handleLogOut"
+			],
+			[
+				"email",
+				"emailInput"
+			],
+			[
+				"confirm",
+				"confirmPasswordInput"
+			],
+			[
+				"tran",
+				"transactions"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 187.0,
+		"last_filter": "boxy",
+		"selected_items":
+		[
+			[
+				"boxy",
+				"Boxy Theme: Activation"
+			],
+			[
+				"box",
+				"Boxy Theme: Activation"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"preference",
+				"Preferences: Settings"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"babel",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"react",
+				"Set Syntax: React Templates"
+			],
+			[
+				"javas",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"ter",
+				"TernJS: Jump to definition"
+			],
+			[
+				"jsx",
+				"Set Syntax: JSX"
+			],
+			[
+				"tern",
+				"TernJS: Jump to definition"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"JSX",
+				"Set Syntax: JSX"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 503.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/CarlosAlmonte/Desktop/FOLDERS/FIS/week11/macros-frontend"
+	],
+	"file_history":
+	[
+		"/Users/CarlosAlmonte/Desktop/FOLDERS/FIS/week11/macros-frontend/src/App.css",
+		"/Users/CarlosAlmonte/Desktop/FOLDERS/FIS/week11/macros-frontend/src/components/FoodSelect.js",
+		"/Users/CarlosAlmonte/Desktop/FOLDERS/FIS/week11/macros-frontend/src/components/TableRow.js",
+		"/Users/CarlosAlmonte/Desktop/FOLDERS/FIS/week11/macros-frontend/macros.sublime-project",
+		"/Users/CarlosAlmonte/Desktop/FOLDERS/FIS/week11/macros-frontend/src/components/ScreenTwo.js",
+		"/Users/CarlosAlmonte/Desktop/FOLDERS/FIS/week11/macros-frontend/src/components/MacrosContainer.js",
+		"/Users/CarlosAlmonte/Desktop/FOLDERS/FIS/week11/macros-frontend/src/components/ScreenOne.js",
+		"/Users/CarlosAlmonte/Desktop/FOLDERS/FIS/week11/macros-frontend/src/App.js",
+		"/Users/CarlosAlmonte/Desktop/FOLDERS/FIS/week11/macros-frontend/src/index.js",
+		"/Users/CarlosAlmonte/Library/Application Support/Sublime Text 3/Packages/User/console.log()",
+		"/Users/CarlosAlmonte/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/CarlosAlmonte/Desktop/FOLDERS/FIS/week11/macros-frontend/src/components/macros.sublime-project",
+		"/Users/CarlosAlmonte/Library/Application Support/Sublime Text 3/Packages/TernJS/TernJS.sublime-settings",
+		"/Users/CarlosAlmonte/Library/Application Support/Sublime Text 3/Packages/User/TernJS.sublime-settings",
+		"/Users/CarlosAlmonte/Library/Application Support/Sublime Text 3/Packages/Babel/Babel.sublime-settings",
+		"/Users/CarlosAlmonte/Library/Application Support/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
+		"/Users/CarlosAlmonte/Desktop/FOLDERS/FIS/week11/macros-frontend/src/components/ModalSignupForm.js",
+		"/Users/CarlosAlmonte/Desktop/FOLDERS/FIS/week11/macros-frontend/src/adapters/Auth.js",
+		"/Users/CarlosAlmonte/Desktop/FOLDERS/FIS/week11/macros-frontend/src/components/SignupForm.js",
+		"/Users/CarlosAlmonte/Desktop/FOLDERS/FIS/week11/macros-frontend/src/components/LoginForm.js",
+		"/Users/CarlosAlmonte/Desktop/FOLDERS/FIS/week11/macros-frontend/src/authorize.js",
+		"/Users/CarlosAlmonte/Desktop/FOLDERS/FIS/week11/macros-frontend/public/index.html",
+		"/Users/CarlosAlmonte/Desktop/FOLDERS/FIS/week11/macros-frontend/src/components/ReactSignupForm.js",
+		"/Users/CarlosAlmonte/Desktop/FOLDERS/FIS/week11/macros-backend/app/models/user.rb",
+		"/Users/CarlosAlmonte/Desktop/FOLDERS/FIS/week11/macros-backend/config/routes.rb",
+		"/Users/CarlosAlmonte/Desktop/FOLDERS/FIS/week11/macros-backend/app/controllers/users_controller.rb",
+		"/Users/CarlosAlmonte/Desktop/FOLDERS/FIS/week11/macros-backend/app/controllers/auth_controller.rb",
+		"/Users/CarlosAlmonte/Desktop/FOLDERS/FIS/week11/immersive-assessment-react-frontend-web-062617/src/stylesheets/index.css",
+		"/Users/CarlosAlmonte/Desktop/FOLDERS/FIS/week11/immersive-assessment-react-frontend-web-062617/src/components/Transaction.js",
+		"/Users/CarlosAlmonte/Desktop/FOLDERS/FIS/week11/immersive-assessment-react-frontend-web-062617/src/transactionsData.js"
+	],
+	"find":
+	{
+		"height": 48.0
+	},
+	"find_in_files":
+	{
+		"height": 132.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"consol",
+			"import",
+			"Food",
+			"Carbs",
+			"props",
+			"home",
+			"macro",
+			"macros",
+			"SignupForm",
+			"post",
+			"inputValue"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 22.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "macros.sublime-project",
+	"replace":
+	{
+		"height": 40.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"foodsele",
+				"src/components/FoodSelect.js"
+			],
+			[
+				"app.js",
+				"src/App.js"
+			],
+			[
+				"loginf",
+				"src/components/LoginForm.js"
+			],
+			[
+				"index.js",
+				"src/index.js"
+			],
+			[
+				"index",
+				"public/index.html"
+			],
+			[
+				"macr",
+				"src/components/MacrosContainer.js"
+			],
+			[
+				"gemfil",
+				"Gemfile"
+			],
+			[
+				"routes",
+				"config/routes.rb"
+			],
+			[
+				"nutritio",
+				"app/views/clients/nutritionaldata.html.erb"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 208.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

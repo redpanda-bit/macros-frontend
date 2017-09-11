@@ -13,13 +13,6 @@ export class ModalSignupForm extends React.Component {
   handleSignupSubmit = (event) => {
     event.preventDefault()
 
-
-
-    console.log(this.state.usernameInput)
-    console.log(this.state.emailInput)
-    console.log(this.state.passwordInput)
-    console.log(this.state.confirmPasswordInput)
-
   if (this.state.passwordInput === this.state.confirmPasswordInput) {
       const userParams = {
         username: this.state.usernameInput,
@@ -71,7 +64,6 @@ export class ModalSignupForm extends React.Component {
 
 
   render(){
-      console.log(this.props, "ModalSignupForm props")
 
     return(
         <Modal

@@ -1,5 +1,6 @@
 import React from 'react'
 import ScreenOne from './ScreenOne'
+import ScreenTwo from './ScreenTwo'
 
 
 class MacrosContainer extends React.Component {
@@ -8,7 +9,6 @@ class MacrosContainer extends React.Component {
 			<div>
 			 {this.props.isLoggedIn ? <button onClick={this.props.handleLogOut}>Log out</button> : null }
 			 <ScreenOne />
-	
 			</div>
 			)
 	}

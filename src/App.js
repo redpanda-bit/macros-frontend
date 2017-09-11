@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Auth from './adapters/Auth'
 import LoginForm from './components/LoginForm'
@@ -14,7 +13,7 @@ class App extends Component {
 
   state = {
     currentUser: {},
-    isLoggedIn: false
+    isLoggedIn: localStorage.getItem('jwt')
   }
 
 
@@ -41,10 +40,8 @@ class App extends Component {
   }
 
 
-
   handleButtonClick = () => {
     Auth.me().then(user => {
-      console.log(user)
 
     })
 
@@ -55,10 +52,8 @@ class App extends Component {
     this.setState({
       isLoggedIn: false
     })
-    console.log("Auth logout state", this.state)
 
   }
-
 
   // we want if i click login I should login duh but also I should be redirected 
   // now what does that mean  well a couple things first it means that if im logged in I should never see the login screen
@@ -68,9 +63,6 @@ class App extends Component {
 
 
   render() {
-    console.log(this.signupUser, "sign up function")
-    console.log(this.props)
-    console.log("State", this.state)
 
 
     return (

@@ -3,12 +3,8 @@ import TableRow from './TableRow'
 
 class ScreenTwo extends React.Component {
 
-	
-
 	render(){
-		console.log("screentwo props", this.props)
 		const nutrientRows = this.props.concepts.map((concept, index) => <TableRow key={index} concept={concept} />)
-		
 		return(
 			<div>
 				<table className="ui red table">
@@ -17,10 +13,12 @@ class ScreenTwo extends React.Component {
 					    <th>Include?</th>
 					    <th>Food</th>
 					    <th>Select</th>
-					    <th>Calories</th>
-					    <th>Protein</th>
-					    <th>Fat</th>
-					    <th>Carbs</th>
+					    <th>Serving size</th>
+					    <th>Number of servings</th>
+					    <th>Calories (calories)</th>
+					    <th>Protein (g)</th>
+					    <th>Fat (g)</th>
+					    <th>Carbs (g)</th>
 				  	</tr>
 				  </thead>
 				  <tbody>

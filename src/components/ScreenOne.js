@@ -12,7 +12,6 @@ class ScreenOne extends React.Component {
 
 
 	handleURLChange = (event) => {
-		console.log(event.target.value, "URL")
 		this.setState({URLValue: event.target.value})
 	}
 
@@ -28,7 +27,6 @@ class ScreenOne extends React.Component {
 
 
 	render() {
-		console.log("screen one state", this.state)
 		return (
 			<div>
 				<div>
