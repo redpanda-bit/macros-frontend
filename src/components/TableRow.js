@@ -55,7 +55,6 @@ class TableRow extends Component {
 		console.log("selected from render", this.state.selected);
 		return(
 			<tr>
-			 <td><input type="checkbox" onChange={this.handleChange} checked={this.state.selected} /></td>
 			 <td className="food name">{this.props.concept.name}</td>
 			 <td className="select-food"><FoodSelect options={this.state.searchResults} foodId={this.state.foodId} handleSelect={this.handleSelect}/> </td>
 			 <td className="serving-size">{this.state.servingSize}</td>
@@ -64,7 +63,8 @@ class TableRow extends Component {
 			 <td className="protein">{!parseInt(this.state.protein, 10) ? 0 : this.state.protein * this.state.servingNumbers}</td>
 			 <td className="fat">{!parseInt(this.state.fat, 10) ? 0 : this.state.fat * this.state.servingNumbers}</td>
 			 <td className="carbs">{!parseInt(this.state.carbs, 10) ? 0 : this.state.carbs * this.state.servingNumbers}</td>
-		    </tr>
+			 <td><input type="checkbox" onChange={this.handleChange} checked={this.state.selected} /></td>
+		  </tr>
 		)
 	}
 }

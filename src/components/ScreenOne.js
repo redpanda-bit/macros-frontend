@@ -45,7 +45,7 @@ class ScreenOne extends React.Component {
 					<img alt="food" src={this.state.URLValue} style={{height: "150px"}}/>
 				</div>
 				<br></br>
-				{this.state.URLValue === "" ? null : <ScreenTwo concepts={this.state.concepts}/>}
+				{this.state.URLValue === "" ? null : <ScreenTwo handleLog={this.props.handleLog} concepts={this.state.concepts}/>}
 			</div>
 			)
 	}
