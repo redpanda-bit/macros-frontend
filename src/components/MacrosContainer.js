@@ -2,7 +2,8 @@ import React from 'react'
 import ScreenOne from './ScreenOne'
 import ScreenTwo from './ScreenTwo'
 import Dashboard from './Dashboard'
-
+import { Route, Redirect } from 'react-router-dom'
+import LoginForm from './LoginForm'
 
 
 
@@ -15,7 +16,8 @@ class MacrosContainer extends React.Component {
 		URLValue: "",
 		foodLog: [], 
 		concepts: [],
-		category: 'select'
+		category: 'select',
+		allMeals: []
 	}
 
 	handleName = (event) => {
@@ -28,6 +30,7 @@ class MacrosContainer extends React.Component {
 
 	handleLog = (calorieTotal, proteinTotal, fatTotal, carbTotal) => {
 		const date_date = new Date()
+		console.log(this.props.history, "THESE ARE HISTORY PROPS")
 		console.log("currentUser", this.props.currentUser)
 		this.setState({showDashboard: true, foodLog: [...this.state.foodLog, {meal: {name: this.state.mealName, category: this.state.category, user_id: this.props.currentUser.user.id, date_string: this.state.date, date_date: date_date, image_url: this.state.URLValue, total_cal: calorieTotal, total_protein: proteinTotal, total_fat: fatTotal, total_carbs: carbTotal}}]}, this.postMeal) 
 	}
@@ -44,10 +47,9 @@ class MacrosContainer extends React.Component {
       }
     })
       .then(res => res.json())
-      .then(res => console.log(res))
+      .then(res => this.setState({allMeals: res}))
 
 	}
-
 
 
 	handleDate = (event) => {
@@ -58,7 +60,8 @@ class MacrosContainer extends React.Component {
 		this.setState({URLValue: event.target.value})
 	}
 
-	handleSubmitToAPI = () => {
+	handleSubmitToAPI = (e) => {
+		e.preventDefault()
 		const Clarifai = require('clarifai');
 		const app = new Clarifai.App({apiKey: 'e7bdd0d7b13946c09e584fcdf6b93bc9'});
 		app.models.predict("bd367be194cf45149e75f01d59f77ba7", this.state.URLValue)
@@ -67,12 +70,12 @@ class MacrosContainer extends React.Component {
 
 	render() {
 		console.log("macros state", this.state.foodLog);
+		console.log("dashboard status", this.state.showDashboard)
 		return (
 			<div>
-			 {this.props.isLoggedIn ? <button onClick={this.props.handleLogOut}>Log out</button> : null }
 			 {!this.state.showDashboard ? <ScreenOne handleCategory={this.handleCategory} category={this.state.category} handleDate={this.handleDate} handleURLChange={this.handleURLChange} handleSubmitToAPI={this.handleSubmitToAPI} URLValue={this.state.URLValue} mealName={this.state.mealName} handleName={this.handleName}/> : null } 
-			 {this.state.showDashboard ? <Dashboard foodLog={this.state.foodLog} /> :  <ScreenTwo handleLog={this.handleLog} concepts={this.state.concepts}/>}
-			
+			 {this.state.showDashboard ? <Dashboard allMeals={this.state.allMeals} /> :  <ScreenTwo handleLog={this.handleLog} concepts={this.state.concepts}/>}
+			 <Route path="/dashboard" render={() => !this.state.isLoggedIn ? <LoginForm onLogin={this.loginUser} onSignup={this.signupUser}/> : <Dashboard allMeals={this.state.allMeals}/>} />
 			</div>
 			)
 	}

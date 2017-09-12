@@ -37,6 +37,17 @@ class Auth {
   }
 
 
+ static myMeals() {
+    const jwtToken = localStorage.getItem("jwt")
+    return fetch('http://localhost:3000/api/v1/me/meals',{
+      headers:{
+        "Authorization":`Bearer ${jwtToken}`,
+        "Accept":"application/json"
+      }
+    })
+    .then(res => res.json())
+  }
+
  static logOut() {
     localStorage.removeItem('jwt')
   }

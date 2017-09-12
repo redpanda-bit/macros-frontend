@@ -5,16 +5,27 @@ import LoginForm from './components/LoginForm'
 import SignupForm from './components/SignupForm'
 import ModalSignupForm from './components/ModalSignupForm'
 import MacrosContainer from './components/MacrosContainer'
+import Dashboard from './components/Dashboard'
 
 import { Route, Redirect } from 'react-router-dom'
 import authorize from './authorize'
+
+import { Menu, Segment, Image, Icon } from 'semantic-ui-react'
+import {Link} from 'react-router-dom'
 
 class App extends Component {
 
   state = {
     currentUser: {},
-    isLoggedIn: localStorage.getItem('jwt')
+    isLoggedIn: localStorage.getItem('jwt'),
+    activeItem: 'home'
   }
+
+
+
+
+
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
 
   loginUser = (userParams) => {
@@ -25,7 +36,13 @@ class App extends Component {
           isLoggedIn: true
         })
         localStorage.setItem('jwt', user.jwt)
+        localStorage.setItem('user_id', user.user.id)
+        localStorage.setItem('meals', user.meals)
       })
+      // .then(
+    // Auth.myMeals()
+    // .then(json => console.log(json, "this is my meals"))
+    // )
   }
 
   signupUser = (userParams) => {
@@ -66,14 +83,59 @@ class App extends Component {
 
 
     return (
-      <div>
-        <Route strict path="/" render={() => !this.state.isLoggedIn ? <Redirect to="/login"/> : null }/>
-        <Route path="/home" render={() => <MacrosContainer currentUser={this.state.currentUser} handleLogOut={this.handleLogOut} isLoggedIn={this.state.isLoggedIn}/> }/>
-        <Route path="/login" render={() => !this.state.isLoggedIn ? <LoginForm onLogin={this.loginUser} onSignup={this.signupUser}/> : <Redirect to="/home"/>} />
+        <div>
+        <Menu pointing secondary>
+          <Menu.Item name='macros' active={this.state.activeItem === 'macros'} onClick={this.handleItemClick} as={Link} to='/home'><Icon name='home' />Macros</Menu.Item>
+          <Menu.Item name='about' active={this.state.activeItem === 'about'} onClick={this.handleItemClick} as={Link} to='/about'><Icon name="talk outline"/>About</Menu.Item>
+          <Menu.Menu position='right'>
+
+            {!this.state.isLoggedIn ? <Menu.Item name='sign up' active={this.state.activeItem === 'sign up'} onClick={this.handleItemClick}><Icon name="magic"/>Sign up</Menu.Item>
+            : null 
+            }
+
+
+
+            {!this.state.isLoggedIn ? null
+            : 
+            <Menu.Item name='log meal' active={this.state.activeItem === 'log meal'} onClick={this.handleItemClick} as={Link} to='/logmeal'><Icon name='compose' />Log Meal</Menu.Item>}
+
+
+
+
+            {!this.state.isLoggedIn ? null
+            : 
+            <Menu.Item name='dashboard' active={this.state.activeItem === 'dashboard'} onClick={this.handleItemClick} as={Link} to='/dashboard'><Icon name='bar chart' />Dashboard</Menu.Item>}
+
+
+
+
+            {!this.state.isLoggedIn ? null
+            : 
+            <Menu.Item name='account' active={this.state.activeItem === 'account'} onClick={this.handleItemClick} as={Link} to='/account'><Icon name='user' />Account</Menu.Item>}
+
+            {!this.state.isLoggedIn ? <Menu.Item name='login' active={this.state.activeItem === 'login'} onClick={this.handleItemClick}><Icon name='sign in' />Log in</Menu.Item>
+            : 
+            <Menu.Item name='logout' active={this.state.activeItem === 'logout'} onClick={this.handleLogOut}><Icon name='log out' />Log out</Menu.Item>}
+
+          </Menu.Menu>
+        </Menu>
+
+        <Segment>
+                <div>
+                  <Route strict path="/" render={() => !this.state.isLoggedIn ? <Redirect to="/login"/> : null }/>
+                  <Route path="/home" render={() => <MacrosContainer currentUser={this.state.currentUser} handleLogOut={this.handleLogOut} isLoggedIn={this.state.isLoggedIn}/> }/>
+                  <Route path="/login" render={() => !this.state.isLoggedIn ? <LoginForm onLogin={this.loginUser} onSignup={this.signupUser}/> : <Redirect to="/home"/>} />
+                </div>
+        </Segment>
       </div>
 
 
+
+
       
+
+
+
     );
   }
 }
@@ -81,3 +143,29 @@ class App extends Component {
 
 
 export default App;
+
+
+// {user: {…}, jwt: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozfQ.UZpZ0GX2FpuRtCrVs-11JXhi8s6imktMwilhGUzcJJM"}
+// jwt
+// :
+// "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozfQ.UZpZ0GX2FpuRtCrVs-11JXhi8s6imktMwilhGUzcJJM"
+// user
+// :
+// created_at
+// :
+// "2017-09-07T21:29:23.757Z"
+// email
+// :
+// "sur.snigdha@gmail.com"
+// id
+// :
+// 3
+// password_digest
+// :
+// "$2a$10$VoP8FHfbeJGpkOtgBiIwne87prk0H.yEFhOm4fRy1BOT7McmP4sla"
+// updated_at
+// :
+// "2017-09-07T21:29:23.757Z"
+// username
+// :
+// "snigdha"
