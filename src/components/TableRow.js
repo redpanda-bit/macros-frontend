@@ -28,7 +28,7 @@ class TableRow extends Component {
 	}
 
 	fetchNutrientContent = () => {
-			const selectedFoodURL = 'https://api.nal.usda.gov/ndb/nutrients/?format=json&api_key=LKVhrtgJHJPcK8G72law6xFCC7jpr6Fx5KUQXQVY&nutrients=205&nutrients=204&nutrients=208&nutrients=269&ndbno=' + this.state.foodId
+			const selectedFoodURL = 'https://api.nal.usda.gov/ndb/nutrients/?format=json&api_key=LKVhrtgJHJPcK8G72law6xFCC7jpr6Fx5KUQXQVY&nutrients=205&nutrients=204&nutrients=208&nutrients=203&ndbno=' + this.state.foodId
 			fetch(selectedFoodURL)
 			.then(res => res.json())
 			.then(json => this.setState({nutrientsReport: json.report.foods, 
@@ -94,6 +94,49 @@ class TableRow extends Component {
 								// 3: {nutrient_id: "205", nutrient: "Carbohydrate, by difference", unit: "g", value: "3.06", gm: 10.8}
 								// length:4
 
+
+// {
+// report: {
+// sr: "28",
+// groups: "All groups",
+// subset: "All foods",
+// end: 1,
+// start: 0,
+// total: 1,
+// foods: [
+// {
+// ndbno: "09002",
+// name: "Acerola juice, raw",
+// weight: 242,
+// measure: "1.0 cup",
+// nutrients: [
+// {
+// nutrient_id: "208",
+// nutrient: "Energy",
+// unit: "kcal",
+// value: "56",
+// gm: 23
+// },
+// {
+// nutrient_id: "203",
+// nutrient: "Protein",
+// unit: "g",
+// value: "0.97",
+// gm: 0.4
+// },
+// {
+// nutrient_id: "204",
+// nutrient: "Total lipid (fat)",
+// unit: "g",
+// value: "0.73",
+// gm: 0.3
+// },
+// {
+// nutrient_id: "205",
+// nutrient: "Carbohydrate, by difference",
+// unit: "g",
+// value: "11.62",
+// gm: 4.8
 
 
 

@@ -4,7 +4,7 @@ import DashboardRow from './DashboardRow'
 class Dashboard extends React.Component {
 
 	render(){
-		const meals = this.props.foodLog.map(meal => <DashboardRow meal={meal}/>)
+		const meals = this.props.foodLog.map((meal, index) => <DashboardRow key={index} meal={meal}/>)
 		return(
 				<div>
 				<br></br>
@@ -13,6 +13,7 @@ class Dashboard extends React.Component {
 				    <tr>
 					    <th>Date</th>
 					    <th>Meal</th>
+					    <th>Name</th>
 					    <th>Total calories</th>
 					    <th>Total protein (g)</th>
 					    <th>Total fat (g)</th>

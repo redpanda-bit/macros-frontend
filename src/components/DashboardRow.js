@@ -5,12 +5,13 @@ class DashboardRow extends React.Component {
   render() {
     return (
     	<tr>
-				 <td className="food name"></td>
-				 <td className="select-food"></td>
-				 <td className="calories">{this.props.meal.calorieTotal}</td>
-				 <td className="protein">{this.props.meal.proteinTotal}</td>
-				 <td className="fat">{this.props.meal.fatTotal}</td>
-				 <td className="carbs">{this.props.meal.carbTotal}</td>
+				 <td className="date">{this.props.meal.meal.date_string}</td>
+				 <td className="meal-img"><img src={this.props.meal.meal.image_url} style={{height: "150px"}}/></td>
+				 <td className="meal-name">{this.props.meal.meal.name}</td>
+				 <td className="calories">{this.props.meal.meal.total_cal}</td>
+				 <td className="protein">{this.props.meal.meal.total_protein}</td>
+				 <td className="fat">{this.props.meal.meal.total_fat}</td>
+				 <td className="carbs">{this.props.meal.meal.total_carbs}</td>
 		  </tr>
     )
   }

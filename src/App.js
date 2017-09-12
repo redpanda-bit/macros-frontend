@@ -68,7 +68,7 @@ class App extends Component {
     return (
       <div>
         <Route strict path="/" render={() => !this.state.isLoggedIn ? <Redirect to="/login"/> : null }/>
-        <Route path="/home" render={() => <MacrosContainer handleLogOut={this.handleLogOut} isLoggedIn={this.state.isLoggedIn}/> }/>
+        <Route path="/home" render={() => <MacrosContainer currentUser={this.state.currentUser} handleLogOut={this.handleLogOut} isLoggedIn={this.state.isLoggedIn}/> }/>
         <Route path="/login" render={() => !this.state.isLoggedIn ? <LoginForm onLogin={this.loginUser} onSignup={this.signupUser}/> : <Redirect to="/home"/>} />
       </div>
 
