@@ -44,7 +44,7 @@ class TableRow extends Component {
 	}
 // (this.state.selected ? this.props.setTotal(this.state.calories, this.state.protein, this.state.fat, this.state.carbs, this.state.servingNumbers) : null)
 	componentDidMount() {
-		const queryURL = `https://api.nal.usda.gov/ndb/search/?format=json&q=${this.props.concept.name}&sort=n&max=10&offset=0&api_key=LKVhrtgJHJPcK8G72law6xFCC7jpr6Fx5KUQXQVY&ds=Standard%20Reference`
+		const queryURL = `https://api.nal.usda.gov/ndb/search/?format=json&q=${this.props.concept.name}&sort=n&max=200&offset=0&api_key=LKVhrtgJHJPcK8G72law6xFCC7jpr6Fx5KUQXQVY&ds=Standard%20Reference`
 		fetch(queryURL)
 		.then(res => res.json())
 		.then(json => (json.list ? this.setState({searchResults: json.list.item}) : null))

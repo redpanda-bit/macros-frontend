@@ -50,6 +50,7 @@ class Auth {
 
  static logOut() {
     localStorage.removeItem('jwt')
+    localStorage.removeItem('user')
   }
 }
 

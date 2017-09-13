@@ -31,6 +31,7 @@ class ScreenTwo extends React.Component {
 
 
 	render(){
+		console.log(this.props.data)
 		const nutrientRows = this.props.concepts.map((concept, index) => <TableRow key={index} concept={concept} setTotal={this.setTotal} />)
 		return(
 			<div>
@@ -55,15 +56,15 @@ class ScreenTwo extends React.Component {
 						 <td className="select-food"></td>
 						 <td className="serving-size"></td>
 						 <td className="serving-number"></td>
-						 <td className="calories">{this.state.calorieTotal}</td>
-						 <td className="protein">{this.state.proteinTotal}</td>
-						 <td className="fat">{this.state.fatTotal}</td>
-						 <td className="carbs">{this.state.carbTotal}</td>
+						 <td className="calories">{Math.round(this.state.calorieTotal, 2)}</td>
+						 <td className="protein">{Math.round(this.state.proteinTotal, 2)}</td>
+						 <td className="fat">{Math.round(this.state.fatTotal, 2)}</td>
+						 <td className="carbs">{Math.round(this.state.carbTotal, 2)}</td>
 						 <td></td>
 					  </tr>
 				  </tbody>
 				</table>
-				<button onClick={() => {this.props.handleLog(this.state.calorieTotal, this.state.proteinTotal, this.state.fatTotal, this.state.carbTotal)} }>Log Meal</button>
+				<button className="ui button" onClick={() => {this.props.handleLog(this.state.calorieTotal, this.state.proteinTotal, this.state.fatTotal, this.state.carbTotal)} }>Log Meal</button>
 			</div>		
 		)
 	}

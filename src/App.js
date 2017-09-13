@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
 import Auth from './adapters/Auth'
-import LoginForm from './components/LoginForm'
+import LoginFormTwo from './components/LoginFormTwo'
 import SignupForm from './components/SignupForm'
 import ModalSignupForm from './components/ModalSignupForm'
 import MacrosContainer from './components/MacrosContainer'
 import Dashboard from './components/Dashboard'
+import Account from './components/Account'
+import About from './components/About'
 
 import { Route, Redirect } from 'react-router-dom'
 import authorize from './authorize'
 
-import { Menu, Segment, Image, Icon } from 'semantic-ui-react'
+import { Menu, Segment, Icon } from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
 
 class App extends Component {
@@ -21,8 +23,13 @@ class App extends Component {
     activeItem: 'home'
   }
 
-
-
+  componentDidMount() {
+    console.log("I am mounting in APP")
+    if(this.state.isLoggedIn){
+        Auth.me()
+        .then(userJSON => this.setState({currentUser: userJSON}, ()=> console.log("USERJSON render", this.state.currentUser)))
+    }
+  }
 
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
@@ -32,37 +39,32 @@ class App extends Component {
     Auth.login(userParams)
       .then(user => {
         this.setState({
-          currentUser: user,
+          currentUser: user.user,
           isLoggedIn: true
         })
         localStorage.setItem('jwt', user.jwt)
+        localStorage.setItem('user', user.user)
         localStorage.setItem('user_id', user.user.id)
-        localStorage.setItem('meals', user.meals)
+        localStorage.setItem('meals', user.user.meals)
       })
-      // .then(
-    // Auth.myMeals()
-    // .then(json => console.log(json, "this is my meals"))
-    // )
   }
 
   signupUser = (userParams) => {
     Auth.signup(userParams)
       .then(user => {
         this.setState({
-          currentUser: user,
+          currentUser: user.user,
           isLoggedIn: true
         })
         localStorage.setItem('jwt', user.jwt)
+        localStorage.setItem('user', user.user)
+        localStorage.setItem('user_id', user.user.id)
+        localStorage.setItem('meals', user.user.meals)
       })
   }
 
 
-  handleButtonClick = () => {
-    Auth.me().then(user => {
 
-    })
-
-  }
 
   handleLogOut = () => {
     Auth.logOut();
@@ -81,12 +83,12 @@ class App extends Component {
 
   render() {
 
-
+    console.log(this.state.currentUser, "current user in app render")
     return (
         <div>
         <Menu pointing secondary>
           <Menu.Item name='macros' active={this.state.activeItem === 'macros'} onClick={this.handleItemClick} as={Link} to='/home'><Icon name='home' />Macros</Menu.Item>
-          <Menu.Item name='about' active={this.state.activeItem === 'about'} onClick={this.handleItemClick} as={Link} to='/about'><Icon name="talk outline"/>About</Menu.Item>
+
           <Menu.Menu position='right'>
 
             {!this.state.isLoggedIn ? <Menu.Item name='sign up' active={this.state.activeItem === 'sign up'} onClick={this.handleItemClick}><Icon name="magic"/>Sign up</Menu.Item>
@@ -123,8 +125,11 @@ class App extends Component {
         <Segment>
                 <div>
                   <Route strict path="/" render={() => !this.state.isLoggedIn ? <Redirect to="/login"/> : null }/>
-                  <Route path="/home" render={() => <MacrosContainer currentUser={this.state.currentUser} handleLogOut={this.handleLogOut} isLoggedIn={this.state.isLoggedIn}/> }/>
-                  <Route path="/login" render={() => !this.state.isLoggedIn ? <LoginForm onLogin={this.loginUser} onSignup={this.signupUser}/> : <Redirect to="/home"/>} />
+                  <Route path="/logmeal" render={(data) => <MacrosContainer data={data} currentUser={this.state.currentUser} handleLogOut={this.handleLogOut} isLoggedIn={this.state.isLoggedIn}/> }/>
+                  <Route path="/login" render={() => !this.state.isLoggedIn ? <LoginFormTwo onLogin={this.loginUser} onSignup={this.signupUser}/> : <Redirect to="/logmeal"/>} />
+                  <Route exact path="/dashboard" component={Dashboard} />
+                  <Route exact path="/account" render={() => <Account user={this.state.currentUser}/>} />
+                  <Route exact path="/home" component={About} />
                 </div>
         </Segment>
       </div>

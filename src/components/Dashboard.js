@@ -1,10 +1,23 @@
 import React from 'react'
 import DashboardRow from './DashboardRow'
+import Auth from '../adapters/Auth'
 
 class Dashboard extends React.Component {
 
+
+	state = {
+		allMeals: []
+	}
+
+	componentDidMount = () => {
+		Auth.myMeals()
+    .then(json => this.setState({allMeals: json}))
+    
+	}
+
+
 	render(){
-		const meals = this.props.allMeals.map((meal, index) => <DashboardRow key={index} meal={meal}/>)
+		const meals = this.state.allMeals.map((meal, index) => <DashboardRow key={index} meal={meal}/>)
 		return(
 				<div>
 				<br></br>
