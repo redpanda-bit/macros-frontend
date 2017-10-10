@@ -1,3 +1,28 @@
+# Macros
+This is a ReactJS application put together by two engineers, Snigha Sur (https://github.com/snigdhasur) and Carlos Almonte (https://github.com/carlosalmonte04).
+
+This application allows you to find nutrient values of foods according to a picture.
+
+## Getting started
+
+1. Download this repo
+2. Download the API (backend) from https://github.com/carlosalmonte04/macros-backend
+3. `cd` into `macros-backend`
+4. Run `rails s` to start the backend server
+5. Go back to your downloads folder and `cd` into `macros-frontend`
+6. Run `npm start` or `yarn start` (depending on what you have installed)
+7. You will the following prompt `Something is already running on port 3000.` Agree to the prompt by typing `Y` and pressing enter
+8. Your terminal will take you to the web application
+
+## Troubleshooting
+
+If the instructions above do not work:
+1. Confirm that both servers are running
+2. In the backend terminal run `rake db:migrate` to run the database migration
+3. Ask any of the contributors of this project
+
+Thank you for stopping by!
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
