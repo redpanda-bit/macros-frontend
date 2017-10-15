@@ -1,7 +1,5 @@
 # Macros
-This is a ReactJS application put together by two engineers, Snigha Sur (https://github.com/snigdhasur) and Carlos Almonte (https://github.com/carlosalmonte04).
-
-This application allows you to find nutrient values of foods according to a picture.
+This is a ReactJS application put together Snigha Sur (https://github.com/snigdhasur) and Carlos Almonte (https://github.com/carlosalmonte04).
 
 ## Getting started
 
